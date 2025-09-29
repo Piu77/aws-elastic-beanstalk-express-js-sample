@@ -22,7 +22,12 @@ pipeline {
             }
         }
 
-        
+        stage('Run Unit Tests') {
+            steps {
+                echo "Running unit tests inside container..."
+                sh 'docker run --rm node-app:latest npm test'
+            }
+        }
 
         stage('Security Scan with Snyk') {
             steps {
