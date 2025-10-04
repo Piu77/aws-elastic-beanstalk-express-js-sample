@@ -41,15 +41,6 @@ pipeline {
             }
         }
 
-        stage('Docker Hub Push') {
-            steps {
-                echo "Pushing image to Docker Hub..."
-                sh '''
-                  echo $DOCKER_CREDS_PSW | docker login -u $DOCKER_CREDS_USR --password-stdin
-                  docker tag node-app:latest $DOCKER_CREDS_USR/node-app:latest
-                  docker push $DOCKER_CREDS_USR/node-app:latest
-                '''
-            }
-        }
+        
     }
 }
